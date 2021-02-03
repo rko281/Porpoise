@@ -8,7 +8,11 @@ Class {
 { #category : #'instance creation' }
 GUID class >> fromBytes: guidBytes [
 
-	^guidBytes replaceBytesOf: self newNull from: 1 to: self byteSize startingAt: 1
+	| guid |
+	
+	guid := self newNull.
+
+	^guidBytes replaceBytesOf: guid from: 1 to: guid byteSize startingAt: 1
 ]
 
 { #category : #'instance creation' }
