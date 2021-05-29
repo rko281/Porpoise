@@ -34,6 +34,14 @@ Object >> displayOn: aStream [
 ]
 
 { #category : #'*Porpoise-Core' }
+Object >> expandMacrosIn: aString [
+
+	"Private - Expand aString with the replaceable argument represented by the receiver."
+
+	^aString expandMacrosWith: self
+]
+
+{ #category : #'*Porpoise-Core' }
 Object >> getEvents [
 
 	^nil

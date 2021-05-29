@@ -1,6 +1,13 @@
 Extension { #name : #SequenceableCollection }
 
 { #category : #'*Porpoise-Core' }
+SequenceableCollection >> expandMacrosIn: aString [
+	"Private - Expand aString with the collection of replaceable arguments represented by the receiver."
+
+	^aString expandMacrosWithArguments: self
+]
+
+{ #category : #'*Porpoise-Core' }
 SequenceableCollection >> from: anInteger do: operation [ 
 
 	self from: anInteger keysAndValuesDo: [:i :each | operation value: each]
