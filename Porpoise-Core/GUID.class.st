@@ -8,11 +8,7 @@ Class {
 { #category : #'instance creation' }
 GUID class >> fromBytes: guidBytes [
 
-	| guid |
-	
-	guid := self newNull.
-
-	^guidBytes replaceBytesOf: guid from: 1 to: guid byteSize startingAt: 1
+	^UUID withAll: guidBytes
 ]
 
 { #category : #'instance creation' }
@@ -24,5 +20,11 @@ GUID class >> fromString: aString [
 { #category : #'instance creation' }
 GUID class >> newNull [
 
-	^self nilUUID
+	^UUID nilUUID
+]
+
+{ #category : #'instance creation' }
+GUID class >> newUnique [
+
+	^UUID new
 ]
