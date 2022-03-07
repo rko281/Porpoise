@@ -7,5 +7,5 @@ Class {
 { #category : #'instance creation' }
 Utf8String class >> fromByteArray: aByteArray [
 
-	^UTF8TextConverter default convertFromSystemString: aByteArray asString
+	^^ZnUTF8Encoder default decodeBytes: aByteArray
 ]
