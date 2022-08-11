@@ -48,5 +48,9 @@ Object >> getEvents [
 ]
 
 { #category : #'*Porpoise-Core' }
+Object >> isImmutable: aBoolean [
+]
+
+{ #category : #'*Porpoise-Core' }
 Object >> setEvents: anObject [
 ]

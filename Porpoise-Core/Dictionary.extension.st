@@ -1,6 +1,14 @@
 Extension { #name : #Dictionary }
 
 { #category : #'*Porpoise-Core' }
+Dictionary >> keyAtEqualValue: anObject ifAbsent: aBlock [
+
+	"keyAtValue: uses equality"
+
+	^self keyAtValue: anObject ifAbsent: aBlock
+]
+
+{ #category : #'*Porpoise-Core' }
 Dictionary >> shrink [
 ]
 

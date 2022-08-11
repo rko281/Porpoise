@@ -8,6 +8,10 @@ Behavior >> addClassConstant: aString value: anObject [
 ]
 
 { #category : #'*Porpoise-Core' }
+Behavior >> flushMethodCache [
+]
+
+{ #category : #'*Porpoise-Core' }
 Behavior >> isAbstract: aBoolean [
 ]
 

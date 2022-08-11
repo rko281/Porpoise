@@ -9,6 +9,12 @@ Integer >> exp10 [
 ]
 
 { #category : #'*Porpoise-Core' }
+Integer >> isBitSet: index [
+
+	^self anyMask: (1 bitShift: index-1)
+]
+
+{ #category : #'*Porpoise-Core' }
 Integer >> mask: anInteger set: aBoolean [
 
 	^aBoolean 
@@ -26,4 +32,10 @@ Integer >> maskClear: anInteger [
 Integer >> maskSet: anInteger [
 
 	^self bitOr: anInteger
+]
+
+{ #category : #'*Porpoise-Core' }
+Integer >> setBit: n [
+
+	^self bitAt: n put: 1
 ]
