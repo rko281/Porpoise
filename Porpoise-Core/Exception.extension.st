@@ -7,6 +7,16 @@ Exception class >> signal: message with: aTag [
 ]
 
 { #category : #'*Porpoise-Core' }
+Exception >> signal: signalText with: arg [
+	"Raise the receiver with the <readableString> error message text,
+	signalText and the <Object> tag, arg."
+
+	self messageText: signalText.
+	self tag: arg.
+	^self signal
+]
+
+{ #category : #'*Porpoise-Core' }
 Exception class >> signalWith: aTag [
 		
 	^self signal: nil with: aTag
