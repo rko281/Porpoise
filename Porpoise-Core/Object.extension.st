@@ -52,5 +52,56 @@ Object >> isImmutable: aBoolean [
 ]
 
 { #category : #'*Porpoise-Core' }
+Object >> propertyAt: aSymbol [
+	"Answers a property value of the receiver whose name matches aSymbol."
+
+	^self propertyManager propertyOf: self at: aSymbol.
+]
+
+{ #category : #'*Porpoise-Core' }
+Object >> propertyAt: aSymbol ifAbsent: aBlock [
+	"Answers a property value of the receiver whose name matches aSymbol. If the object
+	does not have such a property then aBlock is evaluated."
+
+	^self propertyManager propertyOf: self at: aSymbol ifAbsent: aBlock.
+]
+
+{ #category : #'*Porpoise-Core' }
+Object >> propertyAt: aSymbol put: valueObject [
+	"Sets a property value of the receiver whose name matches aSymbol."
+
+	^self propertyManager propertyOf: self at: aSymbol put: valueObject.
+]
+
+{ #category : #'*Porpoise-Core' }
+Object >> propertyManager [
+	"Private - Answers the default PropertyManager to use."
+
+	^PropertyManager default
+]
+
+{ #category : #'*Porpoise-Core' }
+Object >> removeAllProperties [
+	"Remove all the properties of the receiver."
+	
+	self propertyManager removeAllPropertiesOf: self
+]
+
+{ #category : #'*Porpoise-Core' }
+Object >> removePropertyAt: aSymbol [
+	"Removes a property of the receiver whose name matches aSymbol."
+
+	^self propertyManager removePropertyOf: self at: aSymbol
+]
+
+{ #category : #'*Porpoise-Core' }
+Object >> removePropertyAt: aSymbol ifAbsent: aBlock [
+	"Removes a property of the receiver whose name matches aSymbol. If the object
+	does not have such a property then aBlock is evaluated."
+
+	^self propertyManager removePropertyOf: self at: aSymbol ifAbsent: aBlock.
+]
+
+{ #category : #'*Porpoise-Core' }
 Object >> setEvents: anObject [
 ]
