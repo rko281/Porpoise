@@ -18,7 +18,7 @@ PropertyManagerTest >> testPropertyLookup [
 ]
 
 { #category : #tests }
-PropertyManagerTest >> testPropertyManagerWeakness [
+PropertyManagerTest >> testPropertyManagerKeyWeakness [
 
 	"Ensure existence of properties doesn't prevent an unreferenced object from being GCd"
 	
@@ -35,6 +35,29 @@ PropertyManagerTest >> testPropertyManagerWeakness [
 	object := nil.
 	Smalltalk garbageCollect.
 	
+	self assert: PropertyManagerTestObject allInstances size equals: count
+]
+
+{ #category : #tests }
+PropertyManagerTest >> testPropertyManagerValueWeakness [
+
+	"Ensure properties are GCd when their owner disappears"
+	
+	| count object property |
+
+	Smalltalk garbageCollect. 
+	count := PropertyManagerTestObject allInstances size.
+	object := Object new.
+	property := PropertyManagerTestObject new.
+	object propertyAt: #test put: property.
+	self assert: PropertyManagerTestObject allInstances size equals: count + 1.
+	
+	object := nil.
+	Smalltalk garbageCollect.
+	self assert: PropertyManagerTestObject allInstances size equals: count + 1.
+
+	property := nil.
+	Smalltalk garbageCollect.
 	self assert: PropertyManagerTestObject allInstances size equals: count
 ]
 

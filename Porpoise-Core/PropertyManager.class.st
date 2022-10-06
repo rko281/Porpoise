@@ -26,8 +26,8 @@ PropertyManager class >> initialize [
 PropertyManager >> initialize [
 	"Private - Initialize the receiver"
 
-	register := WeakIdentityKeyDictionary new
-	
+	register := WeakIdentityKeyDictionary new.
+	WeakArray addDependent: register
 ]
 
 { #category : #accessing }
