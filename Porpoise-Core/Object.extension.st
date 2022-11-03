@@ -67,7 +67,13 @@ Object >> getEvents [
 ]
 
 { #category : #'*Porpoise-Core' }
+Object >> isImmutable [
+	^ self isReadOnlyObject
+]
+
+{ #category : #'*Porpoise-Core' }
 Object >> isImmutable: aBoolean [
+	self setIsReadOnlyObject: aBoolean.
 ]
 
 { #category : #'*Porpoise-Core' }
