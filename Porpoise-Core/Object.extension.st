@@ -30,7 +30,26 @@ Object >> debugPrintString [
 { #category : #'*Porpoise-Core' }
 Object >> displayOn: aStream [
 
+	"Redirect to displayStringOn:
+
+	Note that displayString directly invokes displayStringOn: so will not use any subclass overrides of this method"
+
 	self displayStringOn: aStream
+]
+
+{ #category : #'*Porpoise-Core' }
+Object >> dolphinDisplayOn: aStream [
+
+	"Used by Stream>>display:
+	Redirects to displayOn: which in turn redirects to displayStringOn:
+
+	This is for the benefit of Dolphin classes who provide their own implementation of displayOn:
+	(Dolphin's displayOn: is largely equivalent to Pharo's displayStringOn:)
+
+	Pharo classes implementing displayOn: for reasons other than textual display (e.g. graphical objects) 
+	should reimplement this method to redirect directly to displayStringOn:"
+
+	self displayOn: aStream
 ]
 
 { #category : #'*Porpoise-Core' }

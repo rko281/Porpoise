@@ -1,9 +1,6 @@
 Class {
 	#name : #DolphinSessionManager,
 	#superclass : #Object,
-	#instVars : [
-		'startUpActions'
-	],
 	#classInstVars : [
 		'current'
 	],
@@ -16,10 +13,18 @@ DolphinSessionManager class >> current [
 	^current ifNil: [ current := self new ]
 ]
 
+{ #category : #constants }
+DolphinSessionManager class >> dolphinSessionEvents [
+
+	^#(#sessionStarted #sessionStopped)
+]
+
 { #category : #'class initialization' }
 DolphinSessionManager class >> initialize [ 
 
-	Smalltalk addToStartUpList: self
+	Smalltalk 
+		addToStartUpList: self;
+		addToShutDownList: self
 ]
 
 { #category : #accessing }
@@ -29,37 +34,51 @@ DolphinSessionManager class >> reset [
 ]
 
 { #category : #'system startup' }
+DolphinSessionManager class >> shutDown: isQuitting [
+
+	isQuitting ifTrue: [self current onShutDown]
+]
+
+{ #category : #'system startup' }
 DolphinSessionManager class >> startUp: isNewSession [
 
-	self current onStartUp
+	isNewSession ifTrue: [ self current onStartUp ]
 ]
 
-{ #category : #adding }
-DolphinSessionManager >> addStartUpAction: aBlock [
+{ #category : #'event handling' }
+DolphinSessionManager >> onShutDown [
 
-	startUpActions add: aBlock
-]
-
-{ #category : #initialization }
-DolphinSessionManager >> initialize [
-
-	startUpActions := OrderedCollection new
+	self triggerEvent: #sessionStopped
 ]
 
 { #category : #'event handling' }
 DolphinSessionManager >> onStartUp [
 
-	startUpActions do: [ :each | each value ]
+	self triggerEvent: #sessionStarted
 ]
 
-{ #category : #accessing }
+{ #category : #logging }
+DolphinSessionManager >> trace: aString [
+	"Append aString to the trace device."
+
+	(self traceStream)
+		nextPutAll: aString;
+		flush
+]
+
+{ #category : #logging }
+DolphinSessionManager >> traceLine: aString [
+	"Append aString to the trace stream and start a new line."
+
+	(self traceStream)
+		nextPutAll: aString;
+		cr;
+		flush
+]
+
+{ #category : #logging }
 DolphinSessionManager >> traceStream [
+	"Answer a <puttableStream> onto the session's trace output device."
 
-	^Transcript
-]
-
-{ #category : #announcing }
-DolphinSessionManager >> when: aSymbol send: aSelector to: anObject [
-
-	aSymbol = #sessionStarted ifTrue: [ ^self addStartUpAction: [ anObject perform: aSelector ] ]
+	^Smalltalk at: #Trace ifAbsent: [DeafObject current]
 ]

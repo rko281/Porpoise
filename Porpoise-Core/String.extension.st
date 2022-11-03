@@ -19,9 +19,11 @@ String >> asAnsiString [
 ]
 
 { #category : #'*Porpoise-Core' }
-String >> asUtf16String [ 
+String >> dolphinDisplayOn: aStream [
 
-	^Utf16String fromString: self
+	"Override to avoid the graphics-centric implementation of String>>displayOn:"
+
+	aStream nextPutAll: self
 ]
 
 { #category : #'*Porpoise-Core' }
