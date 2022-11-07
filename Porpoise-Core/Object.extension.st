@@ -53,6 +53,11 @@ Object >> dolphinDisplayOn: aStream [
 ]
 
 { #category : #'*Porpoise-Core' }
+Object >> events [
+	^self actionMap
+]
+
+{ #category : #'*Porpoise-Core' }
 Object >> expandMacrosIn: aString [
 
 	"Private - Expand aString with the replaceable argument represented by the receiver."
@@ -62,12 +67,17 @@ Object >> expandMacrosIn: aString [
 
 { #category : #'*Porpoise-Core' }
 Object >> getEvents [
+	^ EventManager actionMapOrNilFor: self
+]
 
-	^nil
+{ #category : #'*Porpoise-Core' }
+Object >> isImmutable [
+	^ self isReadOnlyObject
 ]
 
 { #category : #'*Porpoise-Core' }
 Object >> isImmutable: aBoolean [
+	self setIsReadOnlyObject: aBoolean.
 ]
 
 { #category : #'*Porpoise-Core' }
@@ -122,5 +132,6 @@ Object >> removePropertyAt: aSymbol ifAbsent: aBlock [
 ]
 
 { #category : #'*Porpoise-Core' }
-Object >> setEvents: anObject [
+Object >> setEvents: anActionMapOrNil [
+	^ EventManager actionMapFor: self put: anActionMapOrNil
 ]
