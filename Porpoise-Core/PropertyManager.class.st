@@ -2,7 +2,8 @@ Class {
 	#name : #PropertyManager,
 	#superclass : #Object,
 	#instVars : [
-		'register'
+		'register',
+		'semaphore'
 	],
 	#classInstVars : [
 		'default'
@@ -27,7 +28,15 @@ PropertyManager >> initialize [
 	"Private - Initialize the receiver"
 
 	register := WeakIdentityKeyDictionary new.
-	WeakArray addWeakDependent: register
+	WeakArray addWeakDependent: register.
+	semaphore := Semaphore forMutualExclusion.
+
+]
+
+{ #category : #private }
+PropertyManager >> propertiesForStoreOf: anObject [
+	^ semaphore
+		critical: [ register at: anObject ifAbsentPut: [ IdentityDictionary new ] ]
 ]
 
 { #category : #accessing }
@@ -45,28 +54,28 @@ PropertyManager >> propertyOf: anObject at: aSymbol ifAbsent: aBlock [
 	"Answers a property value matching aSymbol for anObject. If no such property
 	exists then aBlock will be evaluated"
 
-	^(register lookup: anObject)
-		ifNil: [aBlock value]
-		ifNotNil: [:properties | properties at: aSymbol ifAbsent: aBlock]
+	^ (semaphore critical: [ register lookup: anObject ])
+		ifNil: [ aBlock value ]
+		ifNotNil: [ :properties | properties at: aSymbol ifAbsent: aBlock ]
 ]
 
 { #category : #adding }
-PropertyManager >> propertyOf: anObject at: aSymbol ifAbsentPut: valueOperation [ 
+PropertyManager >> propertyOf: anObject at: aSymbol ifAbsentPut: valueOperation [
 	"Answers a property value matching aSymbol for anObject. If no such property
 	exists then the result of evaluating aBlock will is stored as the value of the
 	property, and then answered."
 
-	^(register at: anObject ifAbsentPut: [IdentityDictionary new]) at: aSymbol
+	^ (self propertiesForStoreOf: anObject)
+		at: aSymbol
 		ifAbsentPut: valueOperation
 ]
 
 { #category : #adding }
-PropertyManager >> propertyOf: anObject at: aSymbol put: valueObject [ 
+PropertyManager >> propertyOf: anObject at: aSymbol put: valueObject [
 	"Associates a property valueObject with the property name aSymbol for anObject.
 	Answer the valueObject put."
 
-	^(register at: anObject ifAbsentPut: [IdentityDictionary new]) at: aSymbol
-		put: valueObject
+	^ (self propertiesForStoreOf: anObject) at: aSymbol put: valueObject
 ]
 
 { #category : #accessing }
@@ -78,7 +87,7 @@ PropertyManager >> register [
 PropertyManager >> removeAllPropertiesOf: anObject [
 	"Removes all properties for anObject"
 
-	register removeKey: anObject ifAbsent: []
+	semaphore critical: [ register removeKey: anObject ifAbsent: [  ] ]
 ]
 
 { #category : #removing }
@@ -94,7 +103,9 @@ PropertyManager >> removePropertyOf: anObject at: aSymbol ifAbsent: aBlock [
 	exists then aBlock will be evaluated"
 
 	| propertyDict |
-	propertyDict := register at: anObject ifAbsent: [^aBlock value].
-	propertyDict removeKey: aSymbol ifAbsent: [^aBlock value].
-	propertyDict isEmpty ifTrue: [register removeKey: anObject].
+	propertyDict := (semaphore critical: [ register lookup: anObject ])
+		ifNil: [ ^ aBlock value ].
+	propertyDict removeKey: aSymbol ifAbsent: [ ^ aBlock value ].
+	propertyDict isEmpty
+		ifTrue: [ semaphore critical: [ register removeKey: anObject ] ]
 ]
