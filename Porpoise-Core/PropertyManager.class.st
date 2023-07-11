@@ -28,7 +28,6 @@ PropertyManager >> initialize [
 	"Private - Initialize the receiver"
 
 	register := WeakIdentityKeyDictionary new.
-	WeakArray addWeakDependent: register.
 	semaphore := Semaphore forMutualExclusion.
 
 ]
