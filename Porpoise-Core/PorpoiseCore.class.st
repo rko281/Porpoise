@@ -5,15 +5,16 @@ Class {
 }
 
 { #category : #'class initialization' }
-PorpoiseCore class >> initialize [ 
-
+PorpoiseCore class >> initialize [
 	"Create class pseudonyms
 	
 	self initialize 
 	
 	"
 
-	self environment 
+	self environment
 		at: #AnsiString put: ByteString;
-		at: #ArithmeticValue put: Number
+		at: #ArithmeticValue put: Number;
+		at: #LookupTable put: Dictionary;
+		at: #WeakLookupTable put: WeakValueDictionary
 ]
