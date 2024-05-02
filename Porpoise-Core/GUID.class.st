@@ -1,7 +1,6 @@
 Class {
 	#name : #GUID,
 	#superclass : #UUID,
-	#type : #bytes,
 	#category : #'Porpoise-Core'
 }
 
