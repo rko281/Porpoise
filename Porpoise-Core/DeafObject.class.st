@@ -1,31 +1,32 @@
 Class {
-	#name : #DeafObject,
-	#superclass : #Object,
+	#name : 'DeafObject',
+	#superclass : 'Object',
 	#classVars : [
 		'Current'
 	],
-	#category : #'Porpoise-Core'
+	#category : 'Porpoise-Core',
+	#package : 'Porpoise-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 DeafObject class >> current [ 
 
 	^Current ifNil: [ Current := self new ]
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 DeafObject >> = anotherObject [
 
 	^self class = anotherObject class
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 DeafObject >> doesNotUnderstand: aMessage [
 
 	^self
 ]
 
-{ #category : #'reflective operations' }
+{ #category : 'reflective operations' }
 DeafObject >> mustBeBoolean [
 
 	^true

@@ -1,10 +1,11 @@
 Class {
-	#name : #WeakIdentityDictionary,
-	#superclass : #WeakIdentityValueDictionary,
-	#category : #'Porpoise-Core'
+	#name : 'WeakIdentityDictionary',
+	#superclass : 'WeakIdentityValueDictionary',
+	#category : 'Porpoise-Core',
+	#package : 'Porpoise-Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 WeakIdentityDictionary class >> newWithWeakKeys: anInteger [
 
 	^WeakIdentityKeyDictionary new: anInteger

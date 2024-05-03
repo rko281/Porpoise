@@ -1,12 +1,12 @@
-Extension { #name : #SmallInteger }
+Extension { #name : 'SmallInteger' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 SmallInteger class >> maximum [ 
 
 	^self maxVal
 ]
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 SmallInteger class >> minimum [ 
 
 	^self minVal

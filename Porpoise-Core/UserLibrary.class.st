@@ -1,16 +1,17 @@
 Class {
-	#name : #UserLibrary,
-	#superclass : #Object,
-	#category : #'Porpoise-Core'
+	#name : 'UserLibrary',
+	#superclass : 'Object',
+	#category : 'Porpoise-Core',
+	#package : 'Porpoise-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 UserLibrary class >> default [ 
 
 	^self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 UserLibrary class >> getActiveWindow [
 
 	^FFIConstantHandle new

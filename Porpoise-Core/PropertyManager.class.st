@@ -1,6 +1,6 @@
 Class {
-	#name : #PropertyManager,
-	#superclass : #Object,
+	#name : 'PropertyManager',
+	#superclass : 'Object',
 	#instVars : [
 		'register',
 		'semaphore'
@@ -8,22 +8,23 @@ Class {
 	#classInstVars : [
 		'default'
 	],
-	#category : #'Porpoise-Core'
+	#category : 'Porpoise-Core',
+	#package : 'Porpoise-Core'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PropertyManager class >> default [
 
 	^default
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 PropertyManager class >> initialize [
 
 	default := self new
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 PropertyManager >> initialize [
 	"Private - Initialize the receiver"
 
@@ -32,13 +33,13 @@ PropertyManager >> initialize [
 
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 PropertyManager >> propertiesForStoreOf: anObject [
 	^ semaphore
 		critical: [ register at: anObject ifAbsentPut: [ IdentityDictionary new ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PropertyManager >> propertyOf: anObject at: aSymbol [ 
 	"Answers a property value matching aSymbol for anObject"
 
@@ -48,7 +49,7 @@ PropertyManager >> propertyOf: anObject at: aSymbol [
 		ifAbsent: [register errorNotFound: aSymbol]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PropertyManager >> propertyOf: anObject at: aSymbol ifAbsent: aBlock [
 	"Answers a property value matching aSymbol for anObject. If no such property
 	exists then aBlock will be evaluated"
@@ -58,7 +59,7 @@ PropertyManager >> propertyOf: anObject at: aSymbol ifAbsent: aBlock [
 		ifNotNil: [ :properties | properties at: aSymbol ifAbsent: aBlock ]
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 PropertyManager >> propertyOf: anObject at: aSymbol ifAbsentPut: valueOperation [
 	"Answers a property value matching aSymbol for anObject. If no such property
 	exists then the result of evaluating aBlock will is stored as the value of the
@@ -69,7 +70,7 @@ PropertyManager >> propertyOf: anObject at: aSymbol ifAbsentPut: valueOperation 
 		ifAbsentPut: valueOperation
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 PropertyManager >> propertyOf: anObject at: aSymbol put: valueObject [
 	"Associates a property valueObject with the property name aSymbol for anObject.
 	Answer the valueObject put."
@@ -77,26 +78,26 @@ PropertyManager >> propertyOf: anObject at: aSymbol put: valueObject [
 	^ (self propertiesForStoreOf: anObject) at: aSymbol put: valueObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 PropertyManager >> register [
 	^register
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 PropertyManager >> removeAllPropertiesOf: anObject [
 	"Removes all properties for anObject"
 
 	semaphore critical: [ register removeKey: anObject ifAbsent: [  ] ]
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 PropertyManager >> removePropertyOf: anObject at: aSymbol [
 	"Removes a property value matching aSymbol for anObject"
 
 	self removePropertyOf: anObject at: aSymbol ifAbsent: [register errorNotFound: aSymbol]
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 PropertyManager >> removePropertyOf: anObject at: aSymbol ifAbsent: aBlock [
 	"Removes a property value matching aSymbol for anObject. If no such property
 	exists then aBlock will be evaluated"

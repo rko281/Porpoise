@@ -1,6 +1,6 @@
-Extension { #name : #MessageNotUnderstood }
+Extension { #name : 'MessageNotUnderstood' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 MessageNotUnderstood >> selector [
 
 	^self message selector

@@ -1,6 +1,6 @@
-Extension { #name : #Date }
+Extension { #name : 'Date' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 Date class >> newDay: day monthIndex: month year: year [ 
 
 	^ self newDay: day month: month year: year 

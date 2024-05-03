@@ -1,6 +1,6 @@
-Extension { #name : #Delay }
+Extension { #name : 'Delay' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 Delay class >> forMicroseconds: anInteger [
 
 	^self forMilliseconds: ((anInteger // 1000) max: 1)

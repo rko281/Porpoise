@@ -1,12 +1,12 @@
-Extension { #name : #Message }
+Extension { #name : 'Message' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 Message >> argumentCount [
 
 	^self numArgs
 ]
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 Message >> value: anObject [
 
 	^self sendTo: anObject
