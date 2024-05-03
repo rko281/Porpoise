@@ -1,6 +1,6 @@
-Extension { #name : #ScaledDecimal }
+Extension { #name : 'ScaledDecimal' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 ScaledDecimal >> displayStringOn: aStream [
 	"Omit the scale (compared to printOn:)"
 	

@@ -1,6 +1,6 @@
 Class {
-	#name : #VMConstants,
-	#superclass : #SharedPool,
+	#name : 'VMConstants',
+	#superclass : 'SharedPool',
 	#classVars : [
 		'DoubleSize',
 		'FloatSize',
@@ -26,10 +26,11 @@ Class {
 		'UIntMax',
 		'UIntPtrMax'
 	],
-	#category : #'Porpoise-Core'
+	#category : 'Porpoise-Core',
+	#package : 'Porpoise-Core'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize [
 	self
 		initialize_UIntPtrMax;
@@ -58,117 +59,117 @@ VMConstants class >> initialize [
 		yourself
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_DoubleSize [
 	DoubleSize := 8
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_FloatSize [
 	FloatSize := 4
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_HalfPtrBits [
 	HalfPtrBits := 16
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_HalfPtrMask [
 	HalfPtrMask := 65535
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_HalfPtrMax [
 	HalfPtrMax := 32767
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_HashBits [
 	HashBits := 30
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_IntMax [
 	IntMax := 2147483647
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_IntPtrBits [
 	IntPtrBits := 32
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_IntPtrMask [
 	IntPtrMask := 4294967295
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_IntPtrMax [
 	IntPtrMax := 2147483647
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_IntPtrSize [
 	IntPtrSize := 4
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_IntSize [
 	IntSize := 4
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_IsWin64 [
 	IsWin64 := false
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_MaxBlockNesting [
 	MaxBlockNesting := 255
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_MaxLiterals [
 	MaxLiterals := 65536
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_MaxMessageArgs [
 	MaxMessageArgs := 255
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_MaxPrimitive [
 	MaxPrimitive := 255
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_MaxTemps [
 	MaxTemps := 255
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_MaxVirtualFunction [
 	MaxVirtualFunction := 1024
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_SmallIntegerMax [
 	SmallIntegerMax := 1073741823
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_SmallIntegerMin [
 	SmallIntegerMin := -1073741824
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_UIntMax [
 	UIntMax := 4294967295
 ]
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 VMConstants class >> initialize_UIntPtrMax [
 	UIntPtrMax := 4294967295
 ]

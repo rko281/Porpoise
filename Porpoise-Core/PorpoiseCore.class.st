@@ -1,10 +1,11 @@
 Class {
-	#name : #PorpoiseCore,
-	#superclass : #Object,
-	#category : #'Porpoise-Core'
+	#name : 'PorpoiseCore',
+	#superclass : 'Object',
+	#category : 'Porpoise-Core',
+	#package : 'Porpoise-Core'
 }
 
-{ #category : #'class initialization' }
+{ #category : 'class initialization' }
 PorpoiseCore class >> initialize [
 	"Create class pseudonyms
 	

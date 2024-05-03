@@ -1,10 +1,11 @@
 Class {
-	#name : #Utf8String,
-	#superclass : #String,
-	#category : #'Porpoise-Core'
+	#name : 'Utf8String',
+	#superclass : 'String',
+	#category : 'Porpoise-Core',
+	#package : 'Porpoise-Core'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 Utf8String class >> fromByteArray: aByteArray [
 
 	^ZnUTF8Encoder default decodeBytes: aByteArray

@@ -1,12 +1,12 @@
-Extension { #name : #DateAndTime }
+Extension { #name : 'DateAndTime' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 DateAndTime class >> fromDate: aDate time: aTime [
 
 	^self date: aDate time: aTime
 ]
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 DateAndTime >> nanosecond [
 
 	^ nanos

@@ -1,6 +1,6 @@
-Extension { #name : #PositionableStream }
+Extension { #name : 'PositionableStream' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 PositionableStream >> skipWhile: aMonadicValuable [
 	"Advance the receiver's current position to be past the sequence of future values for which
 	the <monadicValuable> argument evaluates to true. Answer true if there are more elements on

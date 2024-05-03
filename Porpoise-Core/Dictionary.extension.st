@@ -1,6 +1,6 @@
-Extension { #name : #Dictionary }
+Extension { #name : 'Dictionary' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 Dictionary >> keyAtEqualValue: anObject ifAbsent: aBlock [
 
 	"keyAtValue: uses equality"
@@ -8,7 +8,7 @@ Dictionary >> keyAtEqualValue: anObject ifAbsent: aBlock [
 	^self keyAtValue: anObject ifAbsent: aBlock
 ]
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 Dictionary >> lookup: keyObject [
 	"Answer the value named by the <Object> argument, keyObject, or nil if there is no such key in the receiver.
 	Clearly if the receiver can contain nil values then it will not be possible to distinguish between the absence
@@ -19,11 +19,11 @@ Dictionary >> lookup: keyObject [
 	^(array at: (self findElementOrNil: keyObject)) ifNotNil: [:element | element value]
 ]
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 Dictionary >> shrink [
 ]
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 Dictionary class >> withAll: aCollectionOfAssociations [
 
 	| new |

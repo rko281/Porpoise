@@ -1,6 +1,6 @@
-Extension { #name : #SpAbstractPresenter }
+Extension { #name : 'SpAbstractPresenter' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 SpAbstractPresenter >> topShell [ 
 
 	^self window ifNotNil: [ :win | win topShell ]

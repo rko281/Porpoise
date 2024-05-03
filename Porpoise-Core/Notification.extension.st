@@ -1,6 +1,6 @@
-Extension { #name : #Notification }
+Extension { #name : 'Notification' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 Notification class >> deprecated [
 
 	Deprecation new

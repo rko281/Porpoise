@@ -1,6 +1,6 @@
-Extension { #name : #Stream }
+Extension { #name : 'Stream' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 Stream >> display: anObject [
 
 	anObject dolphinDisplayOn: self

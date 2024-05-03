@@ -1,6 +1,6 @@
-Extension { #name : #Morph }
+Extension { #name : 'Morph' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 Morph >> topShell [
 	^ self window
 		ifNotNil: [ :win | 

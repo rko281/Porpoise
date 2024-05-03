@@ -1,6 +1,6 @@
-Extension { #name : #SpWindowPresenter }
+Extension { #name : 'SpWindowPresenter' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 SpWindowPresenter >> topShell [
 
 	^presenter

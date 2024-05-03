@@ -1,6 +1,6 @@
-Extension { #name : #Mutex }
+Extension { #name : 'Mutex' }
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 Mutex >> critical: criticalBlock ifLocked: lockedBlock [
 
 	"Copied from Calypso-NavigationModel extension method tryEnterCritical: criticalBlock ifLocked: lockedBlock"
@@ -13,7 +13,7 @@ Mutex >> critical: criticalBlock ifLocked: lockedBlock [
 		criticalBlock ensure:[owner := nil]] ifLocked: lockedBlock
 ]
 
-{ #category : #'*Porpoise-Core' }
+{ #category : '*Porpoise-Core' }
 Mutex >> owner [
 
 	^owner
