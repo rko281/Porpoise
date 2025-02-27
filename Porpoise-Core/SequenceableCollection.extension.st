@@ -20,6 +20,12 @@ SequenceableCollection >> from: anInteger keysAndValuesDo: aBlock [
 ]
 
 { #category : '*Porpoise-Core' }
+SequenceableCollection >> upTo: anObject [
+
+	^self readStream upTo: anObject
+]
+
+{ #category : '*Porpoise-Core' }
 SequenceableCollection class >> writeStream [
 
 	^self new writeStream
