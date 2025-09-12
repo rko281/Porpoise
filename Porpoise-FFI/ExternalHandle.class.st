@@ -11,7 +11,7 @@ ExternalHandle class >> initialize [
 	self initialize
 	"
 
-	Smalltalk addToStartUpList: self
+	SessionManager current registerSystemClassNamed: self name
 ]
 
 { #category : #'system startup' }
