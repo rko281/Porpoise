@@ -9,11 +9,6 @@ ByteArray >> copyBytesTo: aFFIStructure [
 ]
 
 { #category : #'*Porpoise-FFI' }
-ByteArray class >> newFixed: anInteger [ 
-	^ExternalByteArray newFixed: anInteger
-]
-
-{ #category : #'*Porpoise-FFI' }
 ByteArray >> replaceBytesOf: aString from: start to: stop startingAt: anInteger [ 
 
 	^aString replaceFrom: start to: stop with: self startingAt: anInteger
